@@ -34,9 +34,6 @@ jobs:
   app_push:
     needs: app_build
     runs-on: ubuntu-latest
-    steps:
-      - name: Change working directory to djangoapp
-        run: cd djangoapp
       - name: Build Docker image
         run: |
           docker build -t mariusares/cct-django .
