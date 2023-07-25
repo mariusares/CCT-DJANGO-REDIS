@@ -1,0 +1,23 @@
+name: CI/CD Django on Redis database
+on: [push]
+
+jobs:
+  app_build:
+    runs-on: debian-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+       pylint --disable=C0411 --disable=C0114 --disable=C0116 --disable=E0401  djangoapp/myapp/views.py
