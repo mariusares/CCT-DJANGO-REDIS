@@ -27,14 +27,6 @@ jobs:
         run: |
           pip install pylint
 
-      - name: Collect static files
-        run: |
-          python3 djangoapp/manage.py collectstatic --noinput
-
-      - name: Run database migrations
-        run: |
-          python3 djangoapp/manage.py migrate --noinput
-
       - name: Analysing the code with pylint
         run: |
           pylint --disable=C0411 --disable=C0114 --disable=C0116 --disable=E0401  djangoapp/myapp/views.py
