@@ -20,8 +20,9 @@ def message_form_view(request):
         data = {'name': name, 'message': message, 'timestamp': timestamp}
         r.rpush('messages', json.dumps(data))
         return redirect('message_table')
-
     return render(request, 'message_form.html', {'local_ip': local_ip, 'external_ip': external_ip})
+
+
 def message_table_view(request):
     messages = []
     for data in r.lrange('messages', 0, -1):
