@@ -22,7 +22,10 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip install -r djangoapp/requirements.txt
+
+      - name: Install pylint
+        run: |
+          pip install pylint
 
       - name: Collect static files
         run: |
