@@ -33,6 +33,7 @@ jobs:
 
   app_push:
     needs: app_build
+    runs-on: ubuntu-latest
     steps:
       - name: Build Docker image
         run: |
